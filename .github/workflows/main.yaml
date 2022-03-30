@@ -21,7 +21,9 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: build-result
-          path: .
+          path: |
+            .
+            !node_modules/*
         env:
           CI: true
 
