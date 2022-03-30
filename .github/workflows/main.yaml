@@ -32,8 +32,12 @@ jobs:
           node-version: 16
       - name: Publish
         run: |
+          git config --global user.email $GIT_EMAIL
+          git config --global user.name $GIT_USERNAME
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           npm version patch
           npm publish --ignore-scripts
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_EMAIL: yurym@wix.com
+          GIT_USERNAME: ${{ github.actor }}
