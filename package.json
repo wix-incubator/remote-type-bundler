@@ -21,7 +21,7 @@
     "build:bundle": "esbuild --bundle --target=esnext --platform=node --external:fsevents --outfile=dist/bundle.js src/index.ts",
     "test": "jest --config ./jest.config.js",
     "prepublishOnly": "git push --follow-tags",
-    "prepack": "jq 'del(.postinstall)' new-package.json && cp new-package.json package.json",
+    "prepack": "jq 'del(.postinstall)' package.json > new-package.json && cp new-package.json package.json",
     "postinstall": "bash -c '[ -d ./node_modules/@types ]' && patch-package"
   },
   "bin": {
