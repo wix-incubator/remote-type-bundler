@@ -21,7 +21,7 @@
     "build:bundle": "esbuild --bundle --target=esnext --platform=node --external:fsevents --outfile=dist/bundle.js src/index.ts",
     "test": "jest --config ./jest.config.js",
     "prepublishOnly": "git push --follow-tags",
-    "postinstall": "bash -c '[ -d ./node_modules/@types ] && patch-package"
+    "postinstall": "bash -c '[ -d ./node_modules/@types ]' && patch-package"
   },
   "bin": {
     "remote-types-bundler": "./bin.js"
