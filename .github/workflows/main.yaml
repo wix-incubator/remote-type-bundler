@@ -36,7 +36,7 @@ jobs:
           git config --global user.name $GIT_USERNAME
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           npm version patch
-          npm publish --ignore-scripts
+          npm publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GIT_EMAIL: yurym@wix.com
