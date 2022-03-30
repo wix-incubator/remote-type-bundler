@@ -23,6 +23,7 @@ jobs:
           name: build-result
           path: |
             .
+            !.git
             !node_modules/*
         env:
           CI: true
