@@ -4,7 +4,7 @@ import { createFetcher } from './fetch-unpkg';
 import { tsResolvePlugin } from './ts-resolve';
 import tempy from 'tempy';
 import path from 'path';
-import { cacheFactory } from './cache';
+import { cacheFactoryFactory } from './cache';
 import { wrapTypesWithModuleDeclare } from './wrap-types-with-module-declare';
 
 interface BundleOptions {
@@ -13,13 +13,14 @@ interface BundleOptions {
 
 export async function bundle(packageIdentifier: string, outputFilePath: string, options: BundleOptions = {}) {
     try {
+        const cache = cacheFactoryFactory();
         const packageIdentifierParts = packageIdentifier.split('@');
         const packageName = packageIdentifierParts.slice(0, -1).join('@');
         const packageVersion = packageIdentifierParts[packageIdentifierParts.length - 1];
         console.log(`Trying to bundle package: ${packageName} version:${packageVersion} to ${outputFilePath}`);
         let resultCode = undefined;
         await tempy.directory.task(async tempDirectory => {
-            const saveFileFromPackage = createFetcher(cacheFactory);
+            const saveFileFromPackage = createFetcher(cache.cacheFactory);
             const pkgJsonData: any = await saveFileFromPackage(tempDirectory, packageName, packageVersion, 'package.json');
             const pkgJson = JSON.parse(pkgJsonData);
             const pkgPath = tempDirectory;
@@ -46,6 +47,7 @@ export async function bundle(packageIdentifier: string, outputFilePath: string, 
             }
 		});
 
+        await cache.clearCache();
         return resultCode;
     } catch(ex) {
         console.error(ex);
