@@ -11,9 +11,8 @@ describe.only('Types bundler security', () => {
         };
         (fetch as MockedFetch).setMockedNpmPackages(mockPackages);
         
-        const result = await bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts', { wrapWithModuleDeclare: true });
 
-        expect(result).toBeUndefined();
+        await expect(bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts', { wrapWithModuleDeclare: true })).rejects.toMatchObject({ message: 'Unable to process ../../../../../../../../../../etc/passwd as it is outside of the project root - ../../../../../../../etc/passwd' });
     });
 
     it('should not import files outside the project root via absolute path', async () => {
@@ -24,9 +23,7 @@ describe.only('Types bundler security', () => {
         };
         (fetch as MockedFetch).setMockedNpmPackages(mockPackages);
         
-        const result = await bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts', { wrapWithModuleDeclare: true });
-
-        expect(result).toBeUndefined();
+        await expect(bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts', { wrapWithModuleDeclare: true })).rejects.toMatchObject({ message: 'Unable to find package.json while searching from /etc/passwd upwards' });
     });
 
     it('should not reference types outside the project root', async () => {
@@ -38,8 +35,7 @@ describe.only('Types bundler security', () => {
             })
         });
         
-        const result = await bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts', { wrapWithModuleDeclare: true });
+        await expect(bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts', { wrapWithModuleDeclare: true })).rejects.toMatchObject({ message: 'Unable to process /etc/passwd as it is outside of the project root - ../../../../../../../etc/passwd' });
         
-        expect(result).toBeUndefined();
     });
 });
