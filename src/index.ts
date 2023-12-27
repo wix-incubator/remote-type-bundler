@@ -24,6 +24,10 @@ export async function bundle(packageIdentifier: string, outputFilePath: string, 
             const pkgJsonData: any = await saveFileFromPackage(tempDirectory, packageName, packageVersion, 'package.json');
             const pkgJson = JSON.parse(pkgJsonData);
             const pkgPath = tempDirectory;
+
+            if (!pkgJson.types) {
+                throw new Error(`Currently bundler only supports packages with "types" field.`)
+            }
             
             const inputOptions = {
                 input: path.join(pkgPath, pkgJson.types),
@@ -50,6 +54,6 @@ export async function bundle(packageIdentifier: string, outputFilePath: string, 
         await cache.clearCache();
         return resultCode;
     } catch(ex) {
-        console.error(ex);
+        throw ex;
     }
 }
