@@ -5,35 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/remote-type-bundler.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/create-entry-file.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package-json.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/rollup-plugin-postprocess.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-me.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/.nvmrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/fixtures/react-velo.d.ts-result" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/fixtures/react-velo.d.ts-result" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cache.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/cache.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fetch-unpkg.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/fetch-unpkg.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/files.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/files.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locate-closest-package-json.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locate-closest-package-json.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ts-resolve.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ts-resolve.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wrap-types-with-module-declare.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-me.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,28 +44,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Jest.Types bundler fixtures.executor": "Run",
-    "Jest.Types bundler fixtures.should work with react-velo.executor": "Debug",
-    "Jest.Types bundler security.executor": "Run",
-    "Jest.Types bundler.executor": "Run",
-    "Node.js.test-me.js.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/carmelc/code/remote-type-bundler/node_modules/jest",
-    "nodejs_package_manager_path": "yarn",
-    "npm.test-me.executor": "Run",
-    "npm.testme.executor": "Run",
-    "ts.external.directory.path": "/Users/carmelc/code/remote-type-bundler/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Jest.Types bundler fixtures.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler fixtures.should work with react-velo.executor&quot;: &quot;Debug&quot;,
+    &quot;Jest.Types bundler security.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.test-me.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;carmelc-26-05-2024-14-37&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/carmelc/code/remote-type-bundler/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.test-me.executor&quot;: &quot;Run&quot;,
+    &quot;npm.testme.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/carmelc/code/remote-type-bundler/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RubyModuleManagerSettings">
     <option name="blackListedRootsPaths">
       <list>
@@ -184,7 +159,7 @@
       <updated>1716292115841</updated>
       <workItem from="1716292117186" duration="24832000" />
       <workItem from="1716391269109" duration="116000" />
-      <workItem from="1716391391833" duration="39206000" />
+      <workItem from="1716391391833" duration="39716000" />
     </task>
     <servers />
   </component>
