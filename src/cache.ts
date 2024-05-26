@@ -13,11 +13,11 @@ export function cacheFactoryFactory<Key, Value>() {
     const factoryCaches = new Map<string, Cache<Key, Value>>();
     function cacheFactory<Key, Value>(cacheNamespace: string) : Cache<Key, Value> {
         const factoryCaches = new Map<string, Cache<Key, Value>>();
-    
+
         if (factoryCaches.has(cacheNamespace)) {
             return factoryCaches.get(cacheNamespace)!;
         }
-    
+
         const cache = {
             _cache: new Map<Key, Value>(),
             async get(key) { return (this as any)._cache.get(key) },
@@ -26,16 +26,16 @@ export function cacheFactoryFactory<Key, Value>() {
             async delete(key) { (this as any)._cache.delete(key) },
             async clear() { (this as any)._cache.clear() },
         } as Cache<Key, Value>;
-    
+
         factoryCaches.set(cacheNamespace, cache);
-    
+
         return cache;
     }
 
     return {
         cacheFactory,
         async clearCache() {
-            await Promise.all(Array.from(factoryCaches.values()).map(cache => cache.clear()));
+            // await Promise.all(Array.from(factoryCaches.values()).map(cache => cache.clear()));
         }
     };
 }

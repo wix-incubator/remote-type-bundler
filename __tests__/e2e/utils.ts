@@ -22,9 +22,27 @@ export const pkg = (pkgIdentifier, typesContents, dependencies = {}) => {
         [`${pkgIdentifier}/${types}`]: typesContents,
     }
 
+    const metaDef = {
+        [`${pkgIdentifier}/?meta`]: JSON.stringify({
+            "path": "/",
+            "type": "directory",
+            "files": [
+                {
+                    "path": "/package.json",
+                    "type": "file",
+                    "contentType": "application/json",
+                    "integrity": "sha384-BDckYkrFmAimtif2O2Tik7OOOHeto1EXRJz7WqzJNvNXYGQD1m+NH1Iz+OBiOF+r",
+                    "lastModified": "Sat, 26 Oct 1985 08:15:00 GMT",
+                    "size": 3145
+                }
+            ]
+        }),
+    }
+
     return {
         ...pkgJson,
         ...typesFile,
+        ...metaDef,
     };
 }
 
@@ -42,7 +60,8 @@ jest.mock('node-fetch', () => {
         if (file) {
             return {
                 ok: true,
-                text: jest.fn(() => Promise.resolve(file))
+                text: jest.fn(() => Promise.resolve(file)),
+                json: jest.fn(() => Promise.resolve(JSON.parse(file))),
             };
         }
 
@@ -50,7 +69,8 @@ jest.mock('node-fetch', () => {
 
         return {
             ok: false,
-            text: jest.fn(() => Promise.resolve('Error'))
+            text: jest.fn(() => Promise.resolve('Error')),
+            json: jest.fn(() => Promise.reject('Error, no data returned')),
         };
     }) as unknown as MockedFetch;
 

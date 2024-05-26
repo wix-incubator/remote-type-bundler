@@ -26,7 +26,7 @@ export async function getPackageDetails(projectRootPath: string, request: string
     if (request[0] === '/') {
         const requestPkgJsonResult = await locateClosestPackageJson(request);
         if (!requestPkgJsonResult) {
-            throw new Error(`Unable to find package.json while searching from ${request} upwards`); 
+            throw new Error(`Unable to find package.json while searching from ${request} upwards`);
         }
 
         let containingPackage = undefined;
@@ -51,7 +51,7 @@ export async function getPackageDetails(projectRootPath: string, request: string
     } else if (request[0] === '.') {
         const importerPkgJsonResult = await locateClosestPackageJson(importer || projectRootPath);
         if (!importerPkgJsonResult) {
-            throw new Error(`Unable to find package.json while searching from ${importer || projectRootPath} upwards`); 
+            throw new Error(`Unable to find package.json while searching from ${importer || projectRootPath} upwards`);
         }
 
         let containingPackage = undefined;
@@ -82,7 +82,7 @@ export async function getPackageDetails(projectRootPath: string, request: string
         const packageName = request.startsWith('@') ? request.split(path.sep).slice(0, 2).join(path.sep) : request.split(path.sep)[0];
         const importerPkgJsonResult = await locateClosestPackageJson(importer || projectRootPath);
         if (!importerPkgJsonResult) {
-            throw new Error(`Unable to find package.json while searching from ${importer || projectRootPath} upwards`); 
+            throw new Error(`Unable to find package.json while searching from ${importer || projectRootPath} upwards`);
         }
 
         // Doesn't have a dependency, that's a relative path request.
@@ -107,7 +107,7 @@ export async function getPackageDetails(projectRootPath: string, request: string
 export async function prepareFile(source: string, importer: string | undefined, projectRootPath: string, saveFileFromPackage: FetcherFunction, resolveExtensions = ['.d.ts', '.ts']) {
     debug(`prepareFile: source: ${source}, importer: ${importer}, projectRootPath: ${projectRootPath}, `);
     if (builtinModules.includes(source)) return false;
-    
+
     const packageDetails = await getPackageDetails(projectRootPath, source, importer);
 
     const forDownload = {
@@ -136,11 +136,17 @@ export async function prepareFile(source: string, importer: string | undefined, 
             )
         );
     } else if (!resolveExtensions.some(ext => forDownload.realtiveRequest.endsWith(ext))) {
-        resolveExtensions.forEach(ext =>
-            downloadFilesPromises.push(
-                saveFileFromPackage(forDownload.dir, forDownload.packageName, forDownload.packageVersion, forDownload.realtiveRequest + ext)
-            )
-        );
+        resolveExtensions.forEach(ext => {
+            if (ext.indexOf('{extension}') > -1) {
+                downloadFilesPromises.push(
+                  saveFileFromPackage(forDownload.dir, forDownload.packageName, forDownload.packageVersion, ext.replace('{extension}', forDownload.realtiveRequest))
+                )
+            } else {
+                downloadFilesPromises.push(
+                  saveFileFromPackage(forDownload.dir, forDownload.packageName, forDownload.packageVersion, forDownload.realtiveRequest + ext)
+                )
+            }
+        });
     } else {
         downloadFilesPromises.push(
             saveFileFromPackage(forDownload.dir, forDownload.packageName, forDownload.packageVersion, forDownload.realtiveRequest)

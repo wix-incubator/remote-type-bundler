@@ -15,7 +15,7 @@ export async function locateClosestPackageJson(containingDir: string) {
     let dir = containingDir;
     while (dir !== '/') {
         const pkgJson = await tryReadPackageJson(dir);
-        if (pkgJson) {
+        if (pkgJson?.name) {
             return {
                 containingDir: dir,
                 pkgJson,

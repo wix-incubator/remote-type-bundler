@@ -12,14 +12,23 @@ describe('Types bundler', () => {
             ...pkg('foo-pkg@1.2.3', `export type Foo { fighters: string };`),
         };
         (fetch as MockedFetch).setMockedNpmPackages(mockPackages);
-        
+
         const result = await bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts');
 
         expect(result).toBeTruthy();
 
         expect(removeAllWhiteSpaces(result)).toBe(removeAllWhiteSpaces(`type Foo { fighters: string };
         type Bla { one: Foo };
-        export { Bla };`));
+        
+        type yurypkg_Bla = Bla;
+        declare namespace yurypkg {
+           export type { yurypkg_Bla as Bla}; 
+        }
+        
+        declare module "yury-pkg" {
+            export = yurypkg;
+        }
+        `));
     });
 
     it('should work with external package dependency with relative .. path import', async () => {
@@ -31,14 +40,21 @@ describe('Types bundler', () => {
             ['foo-pkg@1.2.3/some-types.d.ts']: 'export type SomeType = string;',
         };
         (fetch as MockedFetch).setMockedNpmPackages(mockPackages);
-        
+
         const result = await bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts');
 
         expect(result).toBeTruthy();
 
         expect(removeAllWhiteSpaces(result)).toBe(removeAllWhiteSpaces(`type Foo { fighters: string };
         type Bla { one: Foo };
-        export { Bla };`));
+        type yurypkg_Bla = Bla;
+        declare namespace yurypkg {
+           export type { yurypkg_Bla as Bla}; 
+        }
+        
+        declare module "yury-pkg" {
+            export = yurypkg;
+        }`));
     });
 
     it('should work with external package dependency with relative . path import', async () => {
@@ -50,14 +66,21 @@ describe('Types bundler', () => {
             ['foo-pkg@1.2.3/lib/some-types.d.ts']: 'export type SomeType = string;',
         };
         (fetch as MockedFetch).setMockedNpmPackages(mockPackages);
-        
+
         const result = await bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts');
 
         expect(result).toBeTruthy();
 
         expect(removeAllWhiteSpaces(result)).toBe(removeAllWhiteSpaces(`type Foo { fighters: string };
         type Bla { one: Foo };
-        export { Bla };`));
+        type yurypkg_Bla = Bla;
+        declare namespace yurypkg {
+           export type { yurypkg_Bla as Bla}; 
+        }
+        
+        declare module "yury-pkg" {
+            export = yurypkg;
+        }`));
     });
 
     it('should work with scoped packages dependency', async () => {
@@ -67,14 +90,21 @@ describe('Types bundler', () => {
             ...pkg('@wix/foo-pkg@1.2.3', `export type Foo { fighters: string };`),
         };
         (fetch as MockedFetch).setMockedNpmPackages(mockPackages);
-        
+
         const result = await bundle('@wix/yury-pkg@1.0.0', '/tmp/bundle.d.ts');
 
         expect(result).toBeTruthy();
 
         expect(removeAllWhiteSpaces(result)).toBe(removeAllWhiteSpaces(`type Foo { fighters: string };
         type Bla { one: Foo };
-        export { Bla };`));
+        type wixYurypkg_Bla = Bla;
+        declare namespace wixYurypkg {
+           export type { wixYurypkg_Bla as Bla}; 
+        }
+        
+        declare module "@wix/yury-pkg" {
+            export = wixYurypkg;
+        }`));
     });
 
     it('should not touch absolute references', async () => {
@@ -84,7 +114,7 @@ describe('Types bundler', () => {
             export type Bla { one: Foo };`),
         };
         (fetch as MockedFetch).setMockedNpmPackages(mockPackages);
-        
+
         const result = await bundle('@wix/yury-pkg@1.0.0', '/tmp/bundle.d.ts');
 
         expect(result).toBeTruthy();
@@ -92,27 +122,13 @@ describe('Types bundler', () => {
         expect(removeAllWhiteSpaces(result)).toBe(removeAllWhiteSpaces(`/// <reference path="/elementsMap.d.ts" />
         /// <reference path="/types/pages/$w.d.ts" />
         type Bla { one: Foo };
-        export { Bla };`));
-    });
-
-    it('should wrap the resulting bundle with a module declare', async () => {
-        const mockPackages = {
-            ...pkg('yury-pkg@1.0.0', `/// <reference path="/elementsMap.d.ts" />
-            import { Foo } from 'foo-pkg';
-            export type Bla = { one: Foo };`, { 'foo-pkg': '1.2.3' }),
-            ...pkg('foo-pkg@1.2.3', `export type Foo = { fighters: string };`),
-        };
-        (fetch as MockedFetch).setMockedNpmPackages(mockPackages);
+        type wixYurypkg_Bla = Bla;
+        declare namespace wixYurypkg {
+           export type { wixYurypkg_Bla as Bla}; 
+        }
         
-        const result = await bundle('yury-pkg@1.0.0', '/tmp/bundle.d.ts', { wrapWithModuleDeclare: true });
-
-        expect(result).toBeTruthy();
-
-        expect(removeAllWhiteSpaces(result)).toBe(removeAllWhiteSpaces(`/// <reference path="/elementsMap.d.ts" />
-        declare module 'yury-pkg' {
-            type Foo = { fighters: string };
-            type Bla = { one: Foo };
-            export { Bla };
+        declare module "@wix/yury-pkg" {
+            export = wixYurypkg;
         }`));
     });
 });

@@ -21,8 +21,7 @@
     "build:bundle": "esbuild --bundle --target=esnext --platform=node --external:fsevents --outfile=dist/bundle.js src/index.ts",
     "test": "jest --config ./jest.config.js",
     "prepublishOnly": "git push --follow-tags",
-    "prepack": "jq 'del(.scripts.postinstall)' package.json > new-package.json && cp new-package.json package.json",
-    "postinstall": "bash -c '[ -d ./node_modules/@types ]' && patch-package"
+    "prepack": "jq 'del(.scripts.postinstall)' package.json > new-package.json && cp new-package.json package.json"
   },
   "bin": {
     "remote-types-bundler": "./bin.js"
@@ -32,8 +31,10 @@
     "get-latest-version": "^4.0.0",
     "node-fetch": "^2.6.7",
     "resolve": "^1.22.0",
-    "rollup": "^2.70.1",
-    "rollup-plugin-dts": "^4.2.0",
+    "rollup": "^4.18.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-postprocess": "^1.0.2",
+    "rollup-plugin-ts": "^3.4.5",
     "tempy": "^1.0.1",
     "typescript": "^4.6.2"
   },
