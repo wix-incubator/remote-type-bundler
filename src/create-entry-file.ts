@@ -3,6 +3,7 @@ import {Exports, PackageJson, TypeDefs} from "./package-json";
 
 type FileNode = {
   path?: string;
+  type: string;
   files?: FileNode[];
 };
 
@@ -15,7 +16,9 @@ const collectPackageJsonPaths = (node: FileNode, result: string[] = []) => {
   }
 
   if (node.files && Array.isArray(node.files)) {
-    node.files.forEach(file => collectPackageJsonPaths(file, result));
+    // prefer files over inner directories
+    node.files.sort((f1, f2) => f1.type === 'file' ? -1 : f2.type === 'file' ? 1 : 0)
+      .forEach(file => collectPackageJsonPaths(file, result));
   }
 
   return result;
@@ -31,7 +34,7 @@ function moduleNameToVariable(modulePath: string) {
   return modulePath
     .split('/')                // Split the path by '/'
     .map((part, index) => {
-      // Remove any leading '@' and other non-alphanumeric characters
+      // Remove any leading '@' and other non-alphanumeric characters and replace . with the word Dot
       part = part.replace(/[^a-zA-Z0-9]/g, '');
       if (index === 0) {
         // Lowercase the first part
@@ -65,16 +68,20 @@ const getTypesForEntry = (packageName: string, entry: TypeDefs | string, fallbac
 
 }
 
-const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, shouldHandleExports: boolean, path?: string): string => {
+const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, exportsPaths: Set<string>, path?: string): string => {
   let result = getTypesForEntry(packageName, pkgJsonData, pkgJsonData.main, path);
-  if (shouldHandleExports && pkgJsonData.exports) {
+  if (pkgJsonData.exports) {
     try {
       Object.keys(pkgJsonData.exports).forEach(exportEntry => {
-        let exportInfo = pkgJsonData.exports[exportEntry];
-        const fallbackJs = typeof exportInfo === 'string' ?
-          exportInfo as string :
-          (exportInfo as Exports).require;
-        result+= getTypesForEntry(packageName, exportInfo, fallbackJs, exportEntry.replace(/^\.\/+/, ''))
+        if (exportEntry !== '.') {
+          let exportInfo = pkgJsonData.exports[exportEntry];
+          const fallbackJs = typeof exportInfo === 'string' ?
+            exportInfo as string :
+            (exportInfo as Exports).require;
+          const innerPath = exportEntry.replace(/^\.\/+/, '');
+          exportsPaths.add(innerPath);
+          result+= getTypesForEntry(packageName, exportInfo, fallbackJs, innerPath)
+        }
       });
     } catch (e) {
       console.error('Failed to parse exports format, skipping exports', e);
@@ -99,13 +106,17 @@ export const createPackageTypes = async (packageName: string, packageVersion: st
 
 
   const pathsToRead = collectPackageJsonPaths(packageMeta);
-  const shouldHandleExports = pathsToRead.length === 1;
+  const exportsPaths = new Set<string>();
   const results = await Promise.all(pathsToRead.map(async packageJsonPath => {
     const pkgJsonData: any = await fileFetcher(packageJsonPath);
     const pkgJson = JSON.parse(pkgJsonData);
     const modulePath = packageJsonPath.replace('/package.json', '').replace(/^\/+/, '');
-    return getTypesImportForModule(packageName, pkgJson, shouldHandleExports, modulePath);
+    return { modulePath, content: getTypesImportForModule(packageName, pkgJson, exportsPaths, modulePath) };
   }));
-  return results.join('\n');
+  const content = results.filter(({ modulePath }) => !modulePath || !exportsPaths.has(modulePath)).map(({content}) => content).join('\n');
+
+  console.log(content);
+
+  return content;
 }
 
