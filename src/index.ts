@@ -27,7 +27,7 @@ export async function bundle(packageIdentifier: string, outputFilePath: string, 
             const saveFileFromPackage = createFetcher(cache.cacheFactory);
             const loadFileForPackage = (filePath: string, content?: string) => saveFileFromPackage(tempDirectory, packageName, packageVersion, filePath, content);
             const typesEntryContent = await createPackageTypes(packageName, packageVersion, loadFileForPackage);
-            // load the generated file to the cache so it is
+            // load the generated file to the cache so it will start the process of generating the d.ts definitions to all package entries
             await loadFileForPackage(entryFilePath, typesEntryContent);
             const pkgPath = tempDirectory;
 

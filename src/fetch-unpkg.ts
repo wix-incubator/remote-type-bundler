@@ -6,24 +6,6 @@ import type { CacheFactory } from './cache';
 
 const debug = createDebug('fetch-unpkg');
 
-
-export async function saveFileFromPackage(rootDir: string, packageName: string, packageVersion: string, filePath: string) {
-    const url = `https://unpkg.com/${packageName}@${packageVersion}/${filePath}`;
-    const response = await fetch(url);
-
-    if (!response.ok) {
-        throw new Error(`Failed to fetch ${url}`);
-    }
-
-    const data = await response.text();
-    const saveFilePath = path.join(rootDir, filePath);
-    await fs.promises.mkdir(path.dirname(saveFilePath), { recursive: true });
-    await fs.promises.writeFile(saveFilePath, data);
-    debug(`Wrote ${saveFilePath}`);
-
-    return data;
-}
-
 function createDataFetcher(cacheFactory: CacheFactory<string, Promise<string>>) {
     const cache = cacheFactory('url-fetch-cache');
 

@@ -113,10 +113,6 @@ export const createPackageTypes = async (packageName: string, packageVersion: st
     const modulePath = packageJsonPath.replace('/package.json', '').replace(/^\/+/, '');
     return { modulePath, content: getTypesImportForModule(packageName, pkgJson, exportsPaths, modulePath) };
   }));
-  const content = results.filter(({ modulePath }) => !modulePath || !exportsPaths.has(modulePath)).map(({content}) => content).join('\n');
-
-  console.log(content);
-
-  return content;
+  return results.filter(({ modulePath }) => !modulePath || !exportsPaths.has(modulePath)).map(({content}) => content).join('\n');
 }
 

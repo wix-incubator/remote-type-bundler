@@ -35,7 +35,7 @@ export function cacheFactoryFactory<Key, Value>() {
     return {
         cacheFactory,
         async clearCache() {
-            // await Promise.all(Array.from(factoryCaches.values()).map(cache => cache.clear()));
+            await Promise.all(Array.from(factoryCaches.values()).map(cache => cache.clear()));
         }
     };
 }
