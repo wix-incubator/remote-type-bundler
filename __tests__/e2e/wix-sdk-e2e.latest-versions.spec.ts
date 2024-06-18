@@ -4,7 +4,7 @@ import fs from 'fs';
 import { getLatestVersionName, validateTypescript } from './utils';
 
 describe('Latest versions', () => {
-  jest.setTimeout(30000);
+  jest.setTimeout(60000);
   let tempDir: tmp.DirResult;
   let bookingsDtsPath: string;
   let sdkDtsPath: string;

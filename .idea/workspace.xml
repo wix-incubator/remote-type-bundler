@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/fixtures-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/fixtures-e2e.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/create-entry-file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/create-entry-file.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package-json.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package-json.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-me.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-me.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +191,7 @@
       <workItem from="1717051588187" duration="142000" />
       <workItem from="1717051749854" duration="31000" />
       <workItem from="1717412409458" duration="8832000" />
-      <workItem from="1717942039103" duration="36318000" />
+      <workItem from="1717942039103" duration="36902000" />
     </task>
     <servers />
   </component>
