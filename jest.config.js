@@ -1,4 +1,4 @@
-
+/** @type {import('jest').Config} */
 module.exports = {
     "projects": [
         {
@@ -15,5 +15,9 @@ module.exports = {
     ],
     transform: {
         "^.+\\.tsx?$": ['babel-jest', {rootMode: "upward"}]
+    },
+    snapshotFormat: {
+      printBasicPrototype: true,
+      escapeString: false,
     },
 };

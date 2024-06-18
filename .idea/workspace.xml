@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/wix-sdk-e2e.fixed-versions.spec.ts.snap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,48 +45,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Jest.Fixed versions.Verify bookings output against snapshot.executor": "Run",
-    "Jest.Fixed versions.executor": "Run",
-    "Jest.Fixed versions.should create typescript error when the code is not valid.executor": "Run",
-    "Jest.Fixed versions.should generate valid d.ts files which can be used to create ts code.executor": "Run",
-    "Jest.Latest versions.executor": "Run",
-    "Jest.Should validate fixed versions.executor": "Run",
-    "Jest.Should validate fixed versions.should AAA.executor": "Run",
-    "Jest.Should validate fixed versions.should create typescript error when the code is not valid.executor": "Run",
-    "Jest.Should validate fixed versions.should generate valid d.ts files which can be used to create ts code.executor": "Run",
-    "Jest.Test .executor": "Run",
-    "Jest.Types bundler fixtures.executor": "Run",
-    "Jest.Types bundler fixtures.should work with react-velo.executor": "Debug",
-    "Jest.Types bundler security.executor": "Run",
-    "Jest.Types bundler.executor": "Run",
-    "Jest.Types bundler.should allow retries.executor": "Debug",
-    "Jest.Types bundler.should support types in typings and typeBundles.executor": "Run",
-    "Node.js.test-me.js.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "#5 on carmelc-26-05-2024-14-37",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/carmelc/code/remote-type-bundler/__tests__/e2e",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/carmelc/code/remote-type-bundler/node_modules/jest",
-    "nodejs_package_manager_path": "yarn",
-    "npm.build.executor": "Run",
-    "npm.run-local.executor": "Run",
-    "npm.test-me.executor": "Run",
-    "npm.test.executor": "Run",
-    "npm.testme.executor": "Run",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
-    "ts.external.directory.path": "/Users/carmelc/code/remote-type-bundler/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Jest.Fixed versions.Verify bookings output against snapshot.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Fixed versions.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Fixed versions.should create typescript error when the code is not valid.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Fixed versions.should generate valid d.ts files which can be used to create ts code.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Latest versions.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Should validate fixed versions.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Should validate fixed versions.should AAA.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Should validate fixed versions.should create typescript error when the code is not valid.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Should validate fixed versions.should generate valid d.ts files which can be used to create ts code.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Test .executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler fixtures.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler fixtures.should work with react-velo.executor&quot;: &quot;Debug&quot;,
+    &quot;Jest.Types bundler security.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler.should allow retries.executor&quot;: &quot;Debug&quot;,
+    &quot;Jest.Types bundler.should support types in typings and typeBundles.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.test-me.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#5 on carmelc-26-05-2024-14-37&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/carmelc/code/remote-type-bundler/__tests__/e2e&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/carmelc/code/remote-type-bundler/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.run-local.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test-me.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.testme.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.TypeScript&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/carmelc/code/remote-type-bundler/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/__tests__/e2e" />
