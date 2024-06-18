@@ -6,6 +6,7 @@ interface Author {
 export interface TypeDefs {
   typings?: string;
   types?: string;
+  typesBundle?: string;
 }
 
 export interface Exports extends TypeDefs {

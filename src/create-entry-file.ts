@@ -1,5 +1,5 @@
-import fetch from "node-fetch";
-import {Exports, PackageJson, TypeDefs} from "./package-json";
+import fetch from 'node-fetch';
+import { Exports, PackageJson, TypeDefs } from './package-json';
 
 type FileNode = {
   path?: string;
@@ -28,7 +28,7 @@ const isSupportedFile = (fileName: string) => {
   const validExtensions = /\.(js|ts|mjs|tsx)$/i;
 
   return validExtensions.test(fileName);
-}
+};
 
 function moduleNameToVariable(modulePath: string) {
   return modulePath
@@ -48,7 +48,7 @@ function moduleNameToVariable(modulePath: string) {
 }
 
 const getTypesForEntry = (packageName: string, entry: TypeDefs | string, fallbackJs?: string, innerPath?: string) => {
-  let mainImport = typeof entry === 'string' ? entry : entry.types || entry.typings || fallbackJs;
+  let mainImport = typeof entry === 'string' ? entry : entry.typesBundle || entry.types || entry.typings || fallbackJs;
   if (mainImport) {
     mainImport = mainImport.startsWith('.') || mainImport.startsWith('/') ? mainImport : `./${mainImport}`;
     const modulePath = `${packageName}${innerPath ? `/${innerPath}` : ''}`;
@@ -66,7 +66,7 @@ const getTypesForEntry = (packageName: string, entry: TypeDefs | string, fallbac
   }
   return '';
 
-}
+};
 
 const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, exportsPaths: Set<string>, path?: string): string => {
   let result = getTypesForEntry(packageName, pkgJsonData, pkgJsonData.main, path);
@@ -80,7 +80,7 @@ const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, 
             (exportInfo as Exports).require;
           const innerPath = exportEntry.replace(/^\.\/+/, '');
           exportsPaths.add(innerPath);
-          result+= getTypesForEntry(packageName, exportInfo, fallbackJs, innerPath)
+          result += getTypesForEntry(packageName, exportInfo, fallbackJs, innerPath);
         }
       });
     } catch (e) {
@@ -88,22 +88,16 @@ const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, 
     }
   }
   return result;
-}
+};
 
 export const createPackageTypes = async (packageName: string, packageVersion: string, fileFetcher: (filePath: string, content?: string) => Promise<string>) => {
   const url = `https://unpkg.com/${packageName}@${packageVersion}/?meta`;
-  let packageMeta;
 
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Network response was not ok ${response.statusText}`);
-    }
-    packageMeta = await response.json();
-  } catch (error) {
-    console.error('Fetch error:', error);
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Network response was not ok ${response.statusText}`);
   }
-
+  const packageMeta = await response.json();
 
   const pathsToRead = collectPackageJsonPaths(packageMeta);
   const exportsPaths = new Set<string>();
@@ -111,8 +105,11 @@ export const createPackageTypes = async (packageName: string, packageVersion: st
     const pkgJsonData: any = await fileFetcher(packageJsonPath);
     const pkgJson = JSON.parse(pkgJsonData);
     const modulePath = packageJsonPath.replace('/package.json', '').replace(/^\/+/, '');
-    return { modulePath, content: getTypesImportForModule(packageName, pkgJson, exportsPaths, modulePath) };
+    return {
+      modulePath,
+      content: getTypesImportForModule(packageName, pkgJson, exportsPaths, modulePath)
+    };
   }));
-  return results.filter(({ modulePath }) => !modulePath || !exportsPaths.has(modulePath)).map(({content}) => content).join('\n');
-}
+  return results.filter(({modulePath}) => !modulePath || !exportsPaths.has(modulePath)).map(({content}) => content).join('\n');
+};
 
