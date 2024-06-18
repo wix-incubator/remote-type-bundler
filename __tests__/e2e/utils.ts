@@ -2,7 +2,6 @@ const UNPKG_BASE = 'https://unpkg.com/';
 import type fetch from 'node-fetch';
 import tmp from 'tmp';
 import * as ts from 'typescript';
-// @ts-ignore
 import latestVersion from 'latest-version';
 
 export const pkg = (pkgIdentifier: string, typesContents: string, {
