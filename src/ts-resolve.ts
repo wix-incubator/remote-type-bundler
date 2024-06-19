@@ -40,7 +40,7 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = (pluginOptions : Ts
     throw new Error('Unable to initialize without options.projectRootPath or options.saveFileFromPackage');
   }
 
-  const resolveExtensions = ['.d.ts', '.ts']
+  const resolveExtensions = ['.d.ts', '.ts', '/index.d.ts', '/build/cjs/{extension}.d.ts']
   const resolveBaseOpts = {
       readFile: async (fileName: string, cb: Function) => {
           debug('resolveModule readFile', fileName);

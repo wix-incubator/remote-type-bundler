@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;carmelc&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:wix-incubator/remote-type-bundler.git&quot;,
+    &quot;accountId&quot;: &quot;07ef8e7c-41c5-4a0b-b97d-d8b21d25f2b8&quot;
+  }
+}</component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2gm9vICYCNfaQWAmxcIiE6kLOQC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Jest.Fixed versions.Verify bookings output against snapshot.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Fixed versions.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Fixed versions.should create typescript error when the code is not valid.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Fixed versions.should generate valid d.ts files which can be used to create ts code.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Latest versions.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Should validate fixed versions.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Should validate fixed versions.should AAA.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Should validate fixed versions.should create typescript error when the code is not valid.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Should validate fixed versions.should generate valid d.ts files which can be used to create ts code.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Test .executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler fixtures.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler fixtures.should work with react-velo.executor&quot;: &quot;Debug&quot;,
+    &quot;Jest.Types bundler security.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Types bundler.should allow retries.executor&quot;: &quot;Debug&quot;,
+    &quot;Jest.Types bundler.should support types in typings and typeBundles.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.test-me.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#5 on carmelc-26-05-2024-14-37&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/carmelc/code/remote-type-bundler/__tests__/e2e&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/carmelc/code/remote-type-bundler/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.run-local.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test-me.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.testme.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.TypeScript&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/carmelc/code/remote-type-bundler/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/__tests__/e2e" />
+      <recent name="$PROJECT_DIR$/__tests__/e2e/snapshots" />
+    </key>
+  </component>
+  <component name="RubyModuleManagerSettings">
+    <option name="blackListedRootsPaths">
+      <list>
+        <option value="$PROJECT_DIR$" />
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Jest.Types bundler">
+    <configuration name="Fixed versions" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" />
+      <test-names>
+        <test-name value="Fixed versions" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Latest versions" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" />
+      <test-names>
+        <test-name value="Latest versions" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Types bundler fixtures" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/__tests__/e2e/fixtures-e2e.spec.ts" />
+      <test-names>
+        <test-name value="Types bundler fixtures" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Types bundler" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" />
+      <test-names>
+        <test-name value="Types bundler" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Types bundler.should allow retries" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" />
+      <test-names>
+        <test-name value="Types bundler" />
+        <test-name value="should allow retries" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.Types bundler" />
+        <item itemvalue="Jest.Types bundler.should allow retries" />
+        <item itemvalue="Jest.Latest versions" />
+        <item itemvalue="Jest.Fixed versions" />
+        <item itemvalue="Jest.Types bundler fixtures" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="" />
+      <created>1716292115841</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716292115841</updated>
+      <workItem from="1716292117186" duration="24832000" />
+      <workItem from="1716391269109" duration="116000" />
+      <workItem from="1716391391833" duration="77667000" />
+      <workItem from="1717051588187" duration="142000" />
+      <workItem from="1717051749854" duration="31000" />
+      <workItem from="1717412409458" duration="8832000" />
+      <workItem from="1717942039103" duration="36902000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/test-types.js" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -15,7 +15,7 @@ describe('Types bundler fixtures', () => {
             ...pkg(packageIdentifier, typeDefinitions),
         };
         (fetch as MockedFetch).setMockedNpmPackages(mockPackages);
-        
+
         const result = await bundle(packageIdentifier, '/tmp/bundle.d.ts', { wrapWithModuleDeclare: true });
 
         expect(result).toBeTruthy();
@@ -23,6 +23,6 @@ describe('Types bundler fixtures', () => {
         const expectedFilePath = inputFilePath + '-result';
         const expectedResult = await fs.promises.readFile(expectedFilePath, 'utf8');
 
-        expect(removeAllWhiteSpaces(result)).toBe(removeAllWhiteSpaces(expectedResult));
+        expect(removeAllWhiteSpaces(result!)).toBe(removeAllWhiteSpaces(expectedResult));
     });
 });
