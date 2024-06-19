@@ -47,7 +47,7 @@ export function createFetcher(cacheFactory: CacheFactory<string, Promise<string>
         // remove leading '/'
         const adjustedFilePath = filePath.replace(rootDir, '').replace(/^\/+/, '');
         if (/^(\.ts|\.d\.ts|.*\/\.ts|.*\/\.d\.ts)$/.test(adjustedFilePath)) {
-            return Promise.reject('');
+            return Promise.reject(new Error('Non typescript files should not be saved'));
         }
         const url = `https://unpkg.com/${packageName}@${packageVersion}/${adjustedFilePath}`;
         const overallCacheKey = `${url}|${adjustedFilePath}`;

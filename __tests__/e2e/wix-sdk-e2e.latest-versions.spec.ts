@@ -3,7 +3,7 @@ import { bundle } from '../../src';
 import fs from 'fs';
 import { getLatestVersionName, validateTypescript } from './utils';
 
-describe('Latest versions', () => {
+describe('Verify @latest version in public registry (future proof)', () => {
   jest.setTimeout(60000);
   let tempDir: tmp.DirResult;
   let bookingsDtsPath: string;
