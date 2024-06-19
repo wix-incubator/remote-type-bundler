@@ -1,6 +1,8 @@
+import path from 'path';
+
 const UNPKG_BASE = 'https://unpkg.com/';
 import type fetch from 'node-fetch';
-import tmp from 'tmp';
+import tempy from 'tempy';
 import * as ts from 'typescript';
 import latestVersion from 'latest-version';
 
@@ -118,7 +120,7 @@ export function validateTypescript(code: string, baseDir: string): {
   isValid: boolean;
   messages?: string[]
 } {
-  const mainFilePath = tmp.fileSync({dir: baseDir, postfix: '.ts'}).name;
+  const mainFilePath = path.join(baseDir, tempy.file({extension: 'ts'})); // Construct file path inside the directory
   ts.sys.writeFile(mainFilePath, code);
 
   const program = ts.createProgram([mainFilePath], {});

@@ -1,20 +1,20 @@
-import tmp from 'tmp';
+import tempy from 'tempy';
 import { bundle } from '../../src';
 import fs from 'fs';
 import { validateTypescript } from './utils';
 
 describe('Fixed versions', () => {
   jest.setTimeout(60000);
-  let tempDir: tmp.DirResult;
+  let tempDir: string;
   let bookingsDtsPath: string;
   let sdkDtsPath: string;
   let ecomDtsPath: string;
 
   beforeAll(async () => {
-    tempDir = tmp.dirSync({ unsafeCleanup: true });
-    bookingsDtsPath = `${tempDir.name}/generated/bookings.d.ts`;
-    ecomDtsPath = `${tempDir.name}/generated/ecom.d.ts`;
-    sdkDtsPath = `${tempDir.name}/generated/wix-sdk.d.ts`;
+    tempDir = tempy.directory({ prefix: 'my_temp_dir_' });
+    bookingsDtsPath = `${tempDir}/generated/bookings.d.ts`;
+    ecomDtsPath = `${tempDir}/generated/ecom.d.ts`;
+    sdkDtsPath = `${tempDir}/generated/wix-sdk.d.ts`;
     await Promise.all([
       bundle('@wix/bookings@1.0.396', bookingsDtsPath),
       bundle('@wix/ecom@1.0.602', ecomDtsPath),
@@ -22,8 +22,8 @@ describe('Fixed versions', () => {
     ]);
   });
 
-  afterAll(() => {
-    tempDir.removeCallback();
+  afterAll(async () => {
+    await fs.promises.rm(tempDir, { recursive: true });
   });
 
   it('Verify bookings output against snapshot', () => {
@@ -58,7 +58,7 @@ describe('Fixed versions', () => {
       wixClient.orders.cancelOrder('order-id');
     `;
 
-    expect(validateTypescript(fileContent, tempDir.name).isValid).toBe(true);
+    expect(validateTypescript(fileContent, tempDir).isValid).toBe(true);
   });
 
   it('should create typescript error when the code is not valid', async () => {
@@ -81,7 +81,7 @@ describe('Fixed versions', () => {
       wixClient.orders.ordersShekerKolsheu('order-id');
     `;
 
-    const validationResult = validateTypescript(fileContent, tempDir.name);
+    const validationResult = validateTypescript(fileContent, tempDir);
     expect(validationResult.isValid).toBe(false);
     expect(validationResult.messages!.some(msg => msg.startsWith(`Property 'servicesShekerKolsheu' does not exist`))).toBe(true);
     expect(validationResult.messages!.some(msg => msg.startsWith(`Property 'bookingsShekerKolsheu' does not exist`))).toBe(true);
