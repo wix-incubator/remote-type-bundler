@@ -8,6 +8,8 @@ import path from 'path';
 import { cacheFactoryFactory } from './cache';
 import { createPackageTypes } from './create-entry-file';
 import typesFixerPostprocess from './rollup-plugin-postprocess';
+import fs from 'fs-extra';
+
 
 interface BundleOptions {
   wrapWithModuleDeclare?: boolean;
@@ -24,7 +26,17 @@ export async function bundleOnce(packageIdentifier: string, outputFilePath: stri
   const packageVersion = packageIdentifierParts[packageIdentifierParts.length - 1];
   console.log(`Trying to bundle package: ${packageName} version:${packageVersion} to ${outputFilePath}`);
   let resultCode: string = '';
-  await tempy.directory.task(async tempDirectory => {
+
+  await tempy.directory.task(async tempyDirectory => {
+    let tempDirectory = tempyDirectory;
+    if (process.env.PERSIST_OUTPUT === 'true') {
+      const backupDir = './test-me-results/bundler-temp';
+      fs.removeSync(backupDir);
+
+      fs.ensureDirSync(backupDir);
+      tempDirectory = backupDir;
+    }
+
     const saveFileFromPackage = createFetcher(cache.cacheFactory);
     const loadFileForPackage = (filePath: string, content?: string) => saveFileFromPackage(tempDirectory, packageName, packageVersion, filePath, content);
     const typesEntryContent = await createPackageTypes(packageName, packageVersion, loadFileForPackage);

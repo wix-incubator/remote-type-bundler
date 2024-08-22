@@ -10,6 +10,7 @@ function createDataFetcher(cacheFactory: CacheFactory<string, Promise<string>>) 
     const cache = cacheFactory('url-fetch-cache');
 
     return async function getData(url: string): Promise<string> {
+        debug(`Fetching ${url}`);
         if (await cache.has(url)) {
             debug(`Cache hit for ${url}`);
             const cacheResult = await cache.get(url);

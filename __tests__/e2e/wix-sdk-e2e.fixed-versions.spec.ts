@@ -18,7 +18,7 @@ describe('Fixed versions', () => {
     await Promise.all([
       bundle('@wix/bookings@1.0.396', bookingsDtsPath),
       bundle('@wix/ecom@1.0.602', ecomDtsPath),
-      bundle('@wix/sdk@1.9.5', sdkDtsPath),
+      bundle('@wix/sdk@1.12.0', sdkDtsPath),
     ]);
   });
 

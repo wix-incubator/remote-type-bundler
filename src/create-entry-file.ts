@@ -79,8 +79,11 @@ const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, 
             exportInfo as string :
             (exportInfo as Exports).require;
           const innerPath = exportEntry.replace(/^\.\/+/, '');
-          exportsPaths.add(innerPath);
-          result += getTypesForEntry(packageName, exportInfo, fallbackJs, innerPath);
+          // Cannot supports exports like "./transformations/*"
+          if (!innerPath.endsWith('/*') && !exportsPaths.has(innerPath)) {
+            exportsPaths.add(innerPath);
+            result += getTypesForEntry(packageName, exportInfo, fallbackJs, innerPath);
+          }
         }
       });
     } catch (e) {
