@@ -16,12 +16,15 @@ import { bookings as siteBookings  } from '@wix/site-bookings';
 import { createClient } from '@wix/sdk/client';
 import { bookings } from '@wix/bookings';
 import { orders } from '@wix/ecom';
-import {  } from 'puppeteer';
 
 queryParams.add({key: 'value'}).then(console.log);
 seo.title().then(console.log);
 currentMember.getMember().then(console.log);
 siteBookings.getServiceAvailability('id').then(console.log);
+siteBookings.getCheckoutOptions({
+  slotId: 'da',
+  userId: 'da',
+}).then(console.log);
 render(
   {}, // rootElement
   () => {}, // $w

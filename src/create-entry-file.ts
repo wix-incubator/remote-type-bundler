@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import { Exports, PackageJson, TypeDefs } from './package-json';
+import { CDN, JSDELIVR_API_BASE, UNPKG_BASE } from './consts';
 
 type FileNode = {
   path?: string;
@@ -7,7 +8,13 @@ type FileNode = {
   files?: FileNode[];
 };
 
-const collectPackageJsonPaths = (node: FileNode, result: string[] = []) => {
+type FlatFiles = {
+  files: Array<{
+    name: string;
+  }>
+}
+
+const collectUnpkgPackageJsonPaths = (node: FileNode, result: string[] = []) => {
   if (!node) {
     return result;
   }
@@ -18,10 +25,14 @@ const collectPackageJsonPaths = (node: FileNode, result: string[] = []) => {
   if (node.files && Array.isArray(node.files)) {
     // prefer files over inner directories
     node.files.sort((f1, f2) => f1.type === 'file' ? -1 : f2.type === 'file' ? 1 : 0)
-      .forEach(file => collectPackageJsonPaths(file, result));
+      .forEach(file => collectUnpkgPackageJsonPaths(file, result));
   }
 
   return result;
+};
+
+const collectJsdlvrPackageJsonPaths = (node: FlatFiles): string[] => {
+  return node.files.filter(file => file.name.endsWith('package.json')).map(file => file.name);
 };
 
 const isSupportedFile = (fileName: string) => {
@@ -93,8 +104,10 @@ const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, 
   return result;
 };
 
-export const createPackageTypes = async (packageName: string, packageVersion: string, fileFetcher: (filePath: string, content?: string) => Promise<string>) => {
-  const url = `https://unpkg.com/${packageName}@${packageVersion}/?meta`;
+export const createPackageTypes = async (packageName: string, packageVersion: string, fileFetcher: (filePath: string, content?: string) => Promise<string>, cdn: CDN) => {
+  const url = cdn === CDN.UNPKG ?
+    `${UNPKG_BASE}${packageName}@${packageVersion}/?meta` :
+    `${JSDELIVR_API_BASE}${packageName}@${packageVersion}/flat`;
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -102,17 +115,22 @@ export const createPackageTypes = async (packageName: string, packageVersion: st
   }
   const packageMeta = await response.json();
 
-  const pathsToRead = collectPackageJsonPaths(packageMeta);
+  const pathsToRead = cdn === CDN.UNPKG ?
+    collectUnpkgPackageJsonPaths(packageMeta) :
+    collectJsdlvrPackageJsonPaths(packageMeta);
   const exportsPaths = new Set<string>();
-  const results = await Promise.all(pathsToRead.map(async packageJsonPath => {
-    const pkgJsonData: any = await fileFetcher(packageJsonPath);
-    const pkgJson = JSON.parse(pkgJsonData);
-    const modulePath = packageJsonPath.replace('/package.json', '').replace(/^\/+/, '');
-    return {
-      modulePath,
-      content: getTypesImportForModule(packageName, pkgJson, exportsPaths, modulePath)
-    };
-  }));
+  const results = await Promise.all(pathsToRead
+    // so the order of the package json files is deterministic from top level to deeper level
+    .sort((p1, p2) => p1.length - p2.length)
+    .map(async packageJsonPath => {
+      const pkgJsonData: any = await fileFetcher(packageJsonPath);
+      const pkgJson = JSON.parse(pkgJsonData);
+      const modulePath = packageJsonPath.replace('/package.json', '').replace(/^\/+/, '');
+      return {
+        modulePath,
+        content: getTypesImportForModule(packageName, pkgJson, exportsPaths, modulePath)
+      };
+    }));
   return results.filter(({modulePath}) => !modulePath || !exportsPaths.has(modulePath)).map(({content}) => content).join('\n');
 };
 

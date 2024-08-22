@@ -6,7 +6,7 @@ import createDebug from 'debug'
 import { builtinModules } from 'module'
 import { prepareFile } from './files';
 import { PluginImpl, ResolveIdResult } from 'rollup'
-import { FetcherFunction } from './fetch-unpkg'
+import { FetcherFunction } from './fetch-cdn'
 
 const debug = createDebug('ts-resolve')
 

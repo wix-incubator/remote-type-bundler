@@ -1,10 +1,10 @@
 import path from 'path';
 
-const UNPKG_BASE = 'https://unpkg.com/';
 import type fetch from 'node-fetch';
 import tempy from 'tempy';
 import * as ts from 'typescript';
 import latestVersion from 'latest-version';
+import { JSDELIVR_API_BASE } from '../../src/consts';
 
 export const pkg = (pkgIdentifier: string, typesContents: string, {
   dependencies = {},
@@ -45,6 +45,13 @@ export const pkg = (pkgIdentifier: string, typesContents: string, {
         }
       ]
     }),
+    [`${pkgIdentifier}/flat`]: JSON.stringify({
+      'files': [
+        {
+          'name': '/package.json',
+        }
+      ]
+    }),
   };
 
   return {
@@ -62,10 +69,11 @@ export interface MockedFetch extends Fetch {
 }
 
 jest.mock('node-fetch', () => {
+  const { JSDELIVR_BASE, UNPKG_BASE, JSDELIVR_API_BASE } = require('../../src/consts');
   let mockPackages: { [key: string]: any } = {};
   const errorQueue: string[] = [];
   const fn = jest.fn((url: string) => {
-    const urlWithoutBase = url.replace(UNPKG_BASE, '');
+    const urlWithoutBase = url.replace(UNPKG_BASE, '').replace(JSDELIVR_BASE, '').replace(JSDELIVR_API_BASE, '');
     const file = mockPackages[urlWithoutBase];
     const forcedError = errorQueue.pop();
 

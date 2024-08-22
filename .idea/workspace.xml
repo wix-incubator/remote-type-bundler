@@ -5,28 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/common-libs-e2e.fixed-versions.spec.ts.snap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/site-sdk-e2e.fixed-versions.spec.ts.snap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__tests__/e2e/common-libs-e2e.fixed-versions.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__tests__/e2e/site-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/consts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/wix-sdk-e2e.fixed-versions.spec.ts.snap" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/wix-sdk-e2e.fixed-versions.spec.ts.snap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/create-entry-file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/create-entry-file.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fetch-unpkg.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/fetch-unpkg.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fetch-unpkg.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/fetch-cdn.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/files.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/files.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ts-resolve.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ts-resolve.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-me.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-me.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
   </component>
   <component name="ComposerSettings">
     <execution />
@@ -84,7 +85,7 @@
     "Node.js.test-me.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "#6 on carmelc-22-08-2024-20-22",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/carmelc/code/remote-type-bundler/__tests__/e2e",
     "node.js.detected.package.eslint": "true",
@@ -121,7 +122,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.Fixed versions.Verify sdk output against snapshot">
+  <component name="RunManager" selected="Jest.Fixed versions.Verify bookings output against snapshot">
     <configuration name="All" type="JavaScriptTestRunnerJest" temporary="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -130,16 +131,16 @@
       <scope-kind value="ALL" />
       <method v="2" />
     </configuration>
-    <configuration name="Fixed versions" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="Fixed versions.Verify bookings output against snapshot" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
-      <jest-options value="-u" />
       <envs />
-      <scope-kind value="SUITE" />
+      <scope-kind value="TEST" />
       <test-file value="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" />
       <test-names>
         <test-name value="Fixed versions" />
+        <test-name value="Verify bookings output against snapshot" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -156,6 +157,18 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="Site SDK - Fixed versions" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/__tests__/e2e/site-sdk-e2e.fixed-versions.spec.ts" />
+      <test-names>
+        <test-name value="Site SDK - Fixed versions" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="run-local" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -166,30 +179,20 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="run-local:debug" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="run-local:debug" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <list>
+      <item itemvalue="Jest.Fixed versions.Verify bookings output against snapshot" />
+      <item itemvalue="Jest.Site SDK - Fixed versions" />
       <item itemvalue="Jest.Fixed versions.Verify sdk output against snapshot" />
-      <item itemvalue="Jest.Fixed versions" />
       <item itemvalue="Jest.All" />
-      <item itemvalue="npm.run-local:debug" />
       <item itemvalue="npm.run-local" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.Fixed versions.Verify sdk output against snapshot" />
-        <item itemvalue="Jest.All" />
-        <item itemvalue="npm.run-local:debug" />
-        <item itemvalue="Jest.Fixed versions" />
         <item itemvalue="npm.run-local" />
+        <item itemvalue="Jest.Fixed versions.Verify bookings output against snapshot" />
+        <item itemvalue="Jest.All" />
+        <item itemvalue="Jest.Site SDK - Fixed versions" />
+        <item itemvalue="Jest.Fixed versions.Verify sdk output against snapshot" />
       </list>
     </recent_temporary>
   </component>
@@ -221,6 +224,7 @@
       <workItem from="1722248274624" duration="2307000" />
       <workItem from="1723033646844" duration="2693000" />
       <workItem from="1724047108816" duration="55447000" />
+      <workItem from="1724353504483" duration="883000" />
     </task>
     <servers />
   </component>
@@ -244,7 +248,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/__tests__/e2e/utils.ts</url>
           <line>131</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

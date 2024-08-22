@@ -1,7 +1,7 @@
 import { rollup } from 'rollup';
 // @ts-ignore
 import dts from 'rollup-plugin-dts';
-import { createFetcher } from './fetch-unpkg';
+import { createFetcher } from './fetch-cdn';
 import { tsResolvePlugin } from './ts-resolve';
 import tempy from 'tempy';
 import path from 'path';
@@ -9,22 +9,24 @@ import { cacheFactoryFactory } from './cache';
 import { createPackageTypes } from './create-entry-file';
 import typesFixerPostprocess from './rollup-plugin-postprocess';
 import fs from 'fs-extra';
+import { CDN } from './consts';
 
 
-interface BundleOptions {
+export interface BundleOptions {
   wrapWithModuleDeclare?: boolean;
   retries?: number,
   retryDelayMs?: number,
+  cdn?: CDN,
 }
 
 const entryFilePath = '__tmp-type-bundle__index.d.ts';
 
-export async function bundleOnce(packageIdentifier: string, outputFilePath: string) {
+export async function bundleOnce(packageIdentifier: string, outputFilePath: string, { cdn = CDN.JSDELIVR }: Pick<BundleOptions, 'cdn'>) {
   const cache = cacheFactoryFactory();
   const packageIdentifierParts = packageIdentifier.split('@');
   const packageName = packageIdentifierParts.slice(0, -1).join('@');
   const packageVersion = packageIdentifierParts[packageIdentifierParts.length - 1];
-  console.log(`Trying to bundle package: ${packageName} version:${packageVersion} to ${outputFilePath}`);
+  console.log(`Trying to bundle package: ${packageName} version:${packageVersion} to ${outputFilePath} using cdn ${cdn}`);
   let resultCode: string = '';
 
   await tempy.directory.task(async tempyDirectory => {
@@ -37,9 +39,9 @@ export async function bundleOnce(packageIdentifier: string, outputFilePath: stri
       tempDirectory = backupDir;
     }
 
-    const saveFileFromPackage = createFetcher(cache.cacheFactory);
+    const saveFileFromPackage = createFetcher(cache.cacheFactory, cdn);
     const loadFileForPackage = (filePath: string, content?: string) => saveFileFromPackage(tempDirectory, packageName, packageVersion, filePath, content);
-    const typesEntryContent = await createPackageTypes(packageName, packageVersion, loadFileForPackage);
+    const typesEntryContent = await createPackageTypes(packageName, packageVersion, loadFileForPackage, cdn);
     // load the generated file to the cache so it will start the process of generating the d.ts definitions to all package entries
     await loadFileForPackage(entryFilePath, typesEntryContent);
     const pkgPath = tempDirectory;
@@ -70,11 +72,11 @@ export async function bundleOnce(packageIdentifier: string, outputFilePath: stri
 export async function bundle(
   packageIdentifier: string,
   outputFilePath: string,
-  { retries = 2, retryDelayMs = 1}: BundleOptions = {},
+  { retries = 2, retryDelayMs = 1, cdn }: BundleOptions = {},
 ): Promise<string | undefined> {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      const result = await bundleOnce(packageIdentifier, outputFilePath);
+      const result = await bundleOnce(packageIdentifier, outputFilePath, { cdn });
       if (!result) {
         throw new Error(`failed to get valid response for ${packageIdentifier}, result is empty`)
       }
