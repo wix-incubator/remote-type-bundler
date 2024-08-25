@@ -1,39 +1,5 @@
-import fetch from 'node-fetch';
 import { Exports, PackageJson, TypeDefs } from './package-json';
-import { CDN, JSDELIVR_API_BASE, UNPKG_BASE } from './consts';
-
-type FileNode = {
-  path?: string;
-  type: string;
-  files?: FileNode[];
-};
-
-type FlatFiles = {
-  files: Array<{
-    name: string;
-  }>
-}
-
-const collectUnpkgPackageJsonPaths = (node: FileNode, result: string[] = []) => {
-  if (!node) {
-    return result;
-  }
-  if (node.path && node.path.endsWith('package.json')) {
-    result.push(node.path);
-  }
-
-  if (node.files && Array.isArray(node.files)) {
-    // prefer files over inner directories
-    node.files.sort((f1, f2) => f1.type === 'file' ? -1 : f2.type === 'file' ? 1 : 0)
-      .forEach(file => collectUnpkgPackageJsonPaths(file, result));
-  }
-
-  return result;
-};
-
-const collectJsdlvrPackageJsonPaths = (node: FlatFiles): string[] => {
-  return node.files.filter(file => file.name.endsWith('package.json')).map(file => file.name);
-};
+import { CdnBase, CDN } from './cdn-impl/cdn-base';
 
 const isSupportedFile = (fileName: string) => {
   const validExtensions = /\.(js|ts|mjs|tsx)$/i;
@@ -104,20 +70,8 @@ const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, 
   return result;
 };
 
-export const createPackageTypes = async (packageName: string, packageVersion: string, fileFetcher: (filePath: string, content?: string) => Promise<string>, cdn: CDN) => {
-  const url = cdn === CDN.UNPKG ?
-    `${UNPKG_BASE}${packageName}@${packageVersion}/?meta` :
-    `${JSDELIVR_API_BASE}${packageName}@${packageVersion}/flat`;
-
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Network response was not ok ${response.statusText}`);
-  }
-  const packageMeta = await response.json();
-
-  const pathsToRead = cdn === CDN.UNPKG ?
-    collectUnpkgPackageJsonPaths(packageMeta) :
-    collectJsdlvrPackageJsonPaths(packageMeta);
+export const createPackageTypes = async (packageName: string, packageVersion: string, fileFetcher: (filePath: string, content?: string) => Promise<string>, cdnImpl: CDN) => {
+  const pathsToRead = await cdnImpl.getPackageJsonPaths(packageName, packageVersion);
   const exportsPaths = new Set<string>();
   const results = await Promise.all(pathsToRead
     // so the order of the package json files is deterministic from top level to deeper level

@@ -5,14 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/__tests__/common/utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__tests__/e2e/cdns-e2e.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cdn-factory.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cdn-impl/cdn-base.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cdn-impl/jsdelivr.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cdn-impl/unpkg.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/common-libs-e2e.fixed-versions.spec.ts.snap" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/common-libs-e2e.fixed-versions.spec.ts.snap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/fixtures-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/fixtures.it.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/fixtures/react-velo.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/fixtures/react-velo.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/fixtures/react-velo.d.ts-result" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/fixtures/react-velo.d.ts-result" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/security-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/security.it.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/simple.it.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/site-sdk-e2e.fixed-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/site-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/utils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/unit/get-package-details.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/get-package-details.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/consts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/create-entry-file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/create-entry-file.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fetch-cdn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/fetch-cdn.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rollup-plugin-postprocess.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/rollup-plugin-postprocess.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-me.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-me.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,9 +89,12 @@
     "Jest.Types bundler.executor": "Run",
     "Jest.Types bundler.should allow retries.executor": "Debug",
     "Jest.Types bundler.should support types in typings and typeBundles.executor": "Run",
+    "Jest.Types bundler.should work with external package dependency.executor": "Debug",
     "Jest.Verify @latest version in public registry (future proof).executor": "Run",
     "Jest.Verify @latest version in public registry (future proof).should generate valid d.ts files which can be used to create ts code.executor": "Debug",
+    "Jest.getPackageDetails.executor": "Run",
     "Node.js.test-me.js.executor": "Run",
+    "Node.js.test-me.ts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "#6 on carmelc-22-08-2024-20-22",
@@ -106,8 +123,14 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/__tests__/e2e" />
+      <recent name="$PROJECT_DIR$/src/cdn-impl" />
       <recent name="$PROJECT_DIR$/test-me-results/bundler-temp/node_modules/@wix" />
       <recent name="$PROJECT_DIR$/__tests__/e2e/snapshots" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/__tests__/common" />
+      <recent name="$PROJECT_DIR$/__tests__/unit" />
+      <recent name="$PROJECT_DIR$/__tests__" />
     </key>
   </component>
   <component name="RubyModuleManagerSettings">
@@ -117,7 +140,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.run-local">
+  <component name="RunManager" selected="Jest.All">
     <configuration name="All" type="JavaScriptTestRunnerJest" temporary="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -126,68 +149,60 @@
       <scope-kind value="ALL" />
       <method v="2" />
     </configuration>
-    <configuration name="Fixed versions.Verify bookings output against snapshot" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" />
-      <test-names>
-        <test-name value="Fixed versions" />
-        <test-name value="Verify bookings output against snapshot" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Fixed versions.Verify sdk output against snapshot" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" />
-      <test-names>
-        <test-name value="Fixed versions" />
-        <test-name value="Verify sdk output against snapshot" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Site SDK - Fixed versions" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="Types bundler" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/__tests__/e2e/site-sdk-e2e.fixed-versions.spec.ts" />
+      <test-file value="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" />
       <test-names>
-        <test-name value="Site SDK - Fixed versions" />
+        <test-name value="Types bundler" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="run-local" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="run-local" />
-      </scripts>
+    <configuration name="Types bundler.should work with external package dependency" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
       <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" />
+      <test-names>
+        <test-name value="Types bundler" />
+        <test-name value="should work with external package dependency" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="getPackageDetails" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/__tests__/unit/get-package-details.spec.ts" />
+      <test-names>
+        <test-name value="getPackageDetails" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="test-me.ts" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/test-me.ts" typescript-loader="bundled" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Jest.Fixed versions.Verify bookings output against snapshot" />
-      <item itemvalue="Jest.Site SDK - Fixed versions" />
-      <item itemvalue="Jest.Fixed versions.Verify sdk output against snapshot" />
+      <item itemvalue="Jest.getPackageDetails" />
+      <item itemvalue="Jest.Types bundler" />
       <item itemvalue="Jest.All" />
-      <item itemvalue="npm.run-local" />
+      <item itemvalue="Jest.Types bundler.should work with external package dependency" />
+      <item itemvalue="Node.js.test-me.ts" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.run-local" />
         <item itemvalue="Jest.All" />
-        <item itemvalue="Jest.Fixed versions.Verify bookings output against snapshot" />
-        <item itemvalue="Jest.Site SDK - Fixed versions" />
-        <item itemvalue="Jest.Fixed versions.Verify sdk output against snapshot" />
+        <item itemvalue="Jest.getPackageDetails" />
+        <item itemvalue="Node.js.test-me.ts" />
+        <item itemvalue="Jest.Types bundler" />
+        <item itemvalue="Jest.Types bundler.should work with external package dependency" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +234,7 @@
       <workItem from="1722248274624" duration="2307000" />
       <workItem from="1723033646844" duration="2693000" />
       <workItem from="1724047108816" duration="55447000" />
-      <workItem from="1724353504483" duration="11109000" />
+      <workItem from="1724353504483" duration="26839000" />
     </task>
     <servers />
   </component>
@@ -236,16 +251,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/__tests__/e2e/utils.ts</url>
-          <line>131</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

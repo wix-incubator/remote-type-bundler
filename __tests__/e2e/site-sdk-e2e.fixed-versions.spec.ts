@@ -1,7 +1,7 @@
 import tempy from 'tempy';
 import { bundle } from '../../src';
 import fs from 'fs';
-import { validateTypescript } from './utils';
+import { validateTypescript } from '../common/utils';
 
 describe('Site SDK - Fixed versions', () => {
   jest.setTimeout(60000);

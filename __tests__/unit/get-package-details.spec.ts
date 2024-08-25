@@ -7,7 +7,7 @@ interface LocateClosesePackageJsonMock extends OriginalLocateClosestPackageJson 
 }
 
 jest.mock('../../src/locate-closest-package-json', () => {
-    let dirPackageJSONs = {};
+    let dirPackageJSONs: {[key: string]: string} = {};
     const locateClosestPackageJsonMock = jest.fn((containingDir: string) => {
         if (dirPackageJSONs[containingDir]) {
             return dirPackageJSONs[containingDir];
