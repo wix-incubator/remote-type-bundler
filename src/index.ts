@@ -11,6 +11,7 @@ import typesFixerPostprocess from './rollup-plugin-postprocess';
 import fs from 'fs-extra';
 import { CDN } from './consts';
 
+export { CDN };
 
 export interface BundleOptions {
   wrapWithModuleDeclare?: boolean;

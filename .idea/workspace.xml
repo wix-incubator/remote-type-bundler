@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/consts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/wix-sdk-e2e.fixed-versions.spec.ts.snap" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/wix-sdk-e2e.fixed-versions.spec.ts.snap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/create-entry-file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/create-entry-file.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fetch-unpkg.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/fetch-cdn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/files.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/files.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ts-resolve.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ts-resolve.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-me.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-me.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +213,7 @@
       <workItem from="1722248274624" duration="2307000" />
       <workItem from="1723033646844" duration="2693000" />
       <workItem from="1724047108816" duration="55447000" />
-      <workItem from="1724353504483" duration="883000" />
+      <workItem from="1724353504483" duration="2787000" />
     </task>
     <servers />
   </component>
