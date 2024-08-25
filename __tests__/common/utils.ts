@@ -56,7 +56,7 @@ export const getTestCdnImpl: () => CDN & {
 
   return {
     name: 'test' as CdnType,
-    getPackageJsonPaths: async (packageName, packageVersion) => ['/package.json'],
+    getPackageJsonPaths: async () => ['/package.json'],
     getFileUniqueIdentifier: createKey,
     fetchFromCdn: async (fileIdentifier: CdnFileIdentifier) => {
       const forcedError = errorsQueue.pop();
@@ -102,7 +102,7 @@ export function validateTypescript(code: string, baseDir: string): {
   isValid: boolean;
   messages?: string[]
 } {
-  const mainFilePath = path.join(baseDir, tempy.file({extension: 'ts'})); // Construct file path inside the directory
+  const mainFilePath = path.join(baseDir, tempy.file({extension: 'ts'}));
   ts.sys.writeFile(mainFilePath, code);
 
   const program = ts.createProgram([mainFilePath], {});

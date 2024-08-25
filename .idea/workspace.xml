@@ -5,28 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/__tests__/common/utils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__tests__/e2e/cdns-e2e.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cdn-factory.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cdn-impl/cdn-base.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cdn-impl/jsdelivr.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cdn-impl/unpkg.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/fixtures-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/fixtures.it.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/fixtures/react-velo.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/fixtures/react-velo.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/fixtures/react-velo.d.ts-result" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/fixtures/react-velo.d.ts-result" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/security-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/security.it.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/simple.it.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/site-sdk-e2e.fixed-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/site-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/utils.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.fixed-versions.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/wix-sdk-e2e.latest-versions.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/unit/get-package-details.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/unit/get-package-details.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/consts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/consts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/create-entry-file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/create-entry-file.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fetch-cdn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/fetch-cdn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-me.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-me.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/common/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/common/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/cdns-e2e.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/cdns-e2e.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +64,7 @@
     "Jest.Should validate fixed versions.should generate valid d.ts files which can be used to create ts code.executor": "Run",
     "Jest.Site SDK - Fixed versions.executor": "Run",
     "Jest.Test .executor": "Run",
+    "Jest.Types bundler (1).executor": "Run",
     "Jest.Types bundler fixtures.executor": "Run",
     "Jest.Types bundler fixtures.should work with react-velo.executor": "Debug",
     "Jest.Types bundler security.executor": "Run",
@@ -140,13 +122,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.All">
+  <component name="RunManager" selected="Jest.Types bundler (1)">
     <configuration name="All" type="JavaScriptTestRunnerJest" temporary="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Types bundler (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/__tests__/unit/simple.it.spec.ts" />
+      <test-names>
+        <test-name value="Types bundler" />
+      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="Types bundler" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
@@ -158,19 +152,6 @@
       <test-file value="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" />
       <test-names>
         <test-name value="Types bundler" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Types bundler.should work with external package dependency" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/__tests__/e2e/simple-e2e.spec.ts" />
-      <test-names>
-        <test-name value="Types bundler" />
-        <test-name value="should work with external package dependency" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -190,19 +171,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Jest.Types bundler (1)" />
       <item itemvalue="Jest.getPackageDetails" />
       <item itemvalue="Jest.Types bundler" />
       <item itemvalue="Jest.All" />
-      <item itemvalue="Jest.Types bundler.should work with external package dependency" />
       <item itemvalue="Node.js.test-me.ts" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.Types bundler (1)" />
         <item itemvalue="Jest.All" />
         <item itemvalue="Jest.getPackageDetails" />
         <item itemvalue="Node.js.test-me.ts" />
         <item itemvalue="Jest.Types bundler" />
-        <item itemvalue="Jest.Types bundler.should work with external package dependency" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +215,7 @@
       <workItem from="1722248274624" duration="2307000" />
       <workItem from="1723033646844" duration="2693000" />
       <workItem from="1724047108816" duration="55447000" />
-      <workItem from="1724353504483" duration="26839000" />
+      <workItem from="1724353504483" duration="27753000" />
     </task>
     <servers />
   </component>

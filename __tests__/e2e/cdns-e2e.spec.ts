@@ -2,7 +2,7 @@ import tempy from 'tempy';
 import { bundle, CdnType } from '../../src';
 import fs from 'fs';
 
-describe('Site SDK - Fixed versions', () => {
+describe('Various CDNs', () => {
   jest.setTimeout(60000);
   let tempDir: string;
   let siteBookingsDtsPathUnpkg: string;
