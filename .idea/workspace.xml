@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="8e6c97b6-662a-4245-b74f-1246b91db22c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/common-libs-e2e.fixed-versions.spec.ts.snap" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/e2e/__snapshots__/common-libs-e2e.fixed-versions.spec.ts.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rollup-plugin-postprocess.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/rollup-plugin-postprocess.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-me.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-me.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +117,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.Fixed versions.Verify bookings output against snapshot">
+  <component name="RunManager" selected="npm.run-local">
     <configuration name="All" type="JavaScriptTestRunnerJest" temporary="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -178,8 +184,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.run-local" />
-        <item itemvalue="Jest.Fixed versions.Verify bookings output against snapshot" />
         <item itemvalue="Jest.All" />
+        <item itemvalue="Jest.Fixed versions.Verify bookings output against snapshot" />
         <item itemvalue="Jest.Site SDK - Fixed versions" />
         <item itemvalue="Jest.Fixed versions.Verify sdk output against snapshot" />
       </list>
@@ -213,7 +219,7 @@
       <workItem from="1722248274624" duration="2307000" />
       <workItem from="1723033646844" duration="2693000" />
       <workItem from="1724047108816" duration="55447000" />
-      <workItem from="1724353504483" duration="2787000" />
+      <workItem from="1724353504483" duration="11109000" />
     </task>
     <servers />
   </component>

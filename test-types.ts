@@ -16,6 +16,11 @@ import { bookings as siteBookings  } from '@wix/site-bookings';
 import { createClient } from '@wix/sdk/client';
 import { bookings } from '@wix/bookings';
 import { orders } from '@wix/ecom';
+import { Accessibility } from 'puppeteer';
+
+const a = new Accessibility({} as any);
+
+console.log(a);
 
 queryParams.add({key: 'value'}).then(console.log);
 seo.title().then(console.log);

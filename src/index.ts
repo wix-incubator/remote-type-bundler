@@ -7,7 +7,7 @@ import tempy from 'tempy';
 import path from 'path';
 import { cacheFactoryFactory } from './cache';
 import { createPackageTypes } from './create-entry-file';
-import typesFixerPostprocess from './rollup-plugin-postprocess';
+import { typesFixerPostprocess, importsFixer } from './rollup-plugin-postprocess';
 import fs from 'fs-extra';
 import { CDN } from './consts';
 
@@ -55,7 +55,8 @@ export async function bundleOnce(packageIdentifier: string, outputFilePath: stri
           saveFileFromPackage,
         }),
         dts(),
-        typesFixerPostprocess()
+        typesFixerPostprocess(),
+        importsFixer(),
       ],
     };
 
