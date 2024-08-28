@@ -1,7 +1,7 @@
 import tempy from 'tempy';
 import { bundle } from '../../src';
 import fs from 'fs';
-import { getLatestVersionName, validateTypescript } from './utils';
+import { getLatestVersionName, validateTypescript } from '../common/utils';
 
 describe('Verify @latest version in public registry (future proof)', () => {
   jest.setTimeout(60000);

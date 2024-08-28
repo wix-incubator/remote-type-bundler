@@ -6,7 +6,7 @@ import createDebug from 'debug'
 import { builtinModules } from 'module'
 import { prepareFile } from './files';
 import { PluginImpl, ResolveIdResult } from 'rollup'
-import { FetcherFunction } from './fetch-unpkg'
+import { FetcherFunction } from './fetch-cdn'
 
 const debug = createDebug('ts-resolve')
 
@@ -15,8 +15,15 @@ const resolveModule = (
   opts: _resolve.AsyncOpts
 ) : Promise<string | null> =>
   new Promise((resolve, reject) => {
-    debug(`resolveModule: ${id}, ${opts}`);
+    if (debug.enabled) {
+      debug(`resolveModule: ${id}, ${JSON.stringify(opts)}`);
+    }
     _resolve(id, opts, (err, resolved) => {
+      if (err) {
+        debug(`resolveModule error for ${id} with error: ${err}`);
+      } else {
+        debug(`resolveModule success for ${id} with resolved: ${resolved}`);
+      }
       // @ts-expect-error
       if (err?.code === 'MODULE_NOT_FOUND') return resolve(null)
       if (err) return reject(err)
@@ -40,7 +47,7 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = (pluginOptions : Ts
     throw new Error('Unable to initialize without options.projectRootPath or options.saveFileFromPackage');
   }
 
-  const resolveExtensions = ['.d.ts', '.ts', '/index.d.ts', '/build/cjs/{extension}.d.ts']
+  const resolveExtensions = ['.d.ts', '.ts', '/index.d.ts', '/build/cjs/{extension}.d.ts', '/build/{extension}.d.ts']
   const resolveBaseOpts = {
       readFile: async (fileName: string, cb: Function) => {
           debug('resolveModule readFile', fileName);
@@ -106,15 +113,31 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = (pluginOptions : Ts
 
       // Try resolving in node_modules
       if (!id) {
-        id = await resolveModule(source.replace('.js', ''), {
+        debug(`resolve module for ${source}`);
+        id = await resolveModule(extractModuleName(source), {
             ...resolveBaseOpts,
           basedir,
           extensions: resolveExtensions,
-          packageFilter(pkg: { main?: string; types?: string; typings?: string }) {
+          packageFilter(pkg: { main?: string; types?: string; typings?: string; name?: string; exports?: any; }) {
             pkg.main = pkg.types || pkg.typings;
+            if (!pkg.main && pkg.exports) {
+              const module = `.${source.replace(pkg.name ?? '', '')}`;
+              if (pkg.exports[module]) {
+                const exp = pkg.exports[module];
+                pkg.main = typeof exp === 'string' ?
+                  exp :
+                  (exp.types || exp.typings || exp.import || exp.require);
+                pkg.main = pkg.main?.replace(/\.js$/, '.d.ts').replace(/^\.\//, '');
+              }
+            }
             return pkg;
           },
-          paths: ['node_modules', 'node_modules/@types'],
+          pathFilter(pkg, path, relativePath) {
+            debug('pathFilter %s %s', path, relativePath);
+            // remove sub path in the module
+            return path.replace(`/node_modules/${relativePath}`, '/node_modules') as string;
+          },
+          moduleDirectory: ['node_modules', 'node_modules/@types'],
         })
       }
 
@@ -128,4 +151,18 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = (pluginOptions : Ts
       return false
     },
   };
+}
+
+function extractModuleName(deepImportStr: string): string {
+  if (!deepImportStr) {
+    return '';
+  }
+
+  if (deepImportStr.endsWith('.js')) {
+    return deepImportStr.replace('.js', '');
+  }
+
+  const parts = deepImportStr.split('/');
+
+  return (parts[0].startsWith('@')) ? parts[0] + '/' + parts[1] : parts[0];
 }

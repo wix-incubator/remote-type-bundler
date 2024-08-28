@@ -1,28 +1,5 @@
-import fetch from 'node-fetch';
 import { Exports, PackageJson, TypeDefs } from './package-json';
-
-type FileNode = {
-  path?: string;
-  type: string;
-  files?: FileNode[];
-};
-
-const collectPackageJsonPaths = (node: FileNode, result: string[] = []) => {
-  if (!node) {
-    return result;
-  }
-  if (node.path && node.path.endsWith('package.json')) {
-    result.push(node.path);
-  }
-
-  if (node.files && Array.isArray(node.files)) {
-    // prefer files over inner directories
-    node.files.sort((f1, f2) => f1.type === 'file' ? -1 : f2.type === 'file' ? 1 : 0)
-      .forEach(file => collectPackageJsonPaths(file, result));
-  }
-
-  return result;
-};
+import { CdnBase, CDN } from './cdn-impl/cdn-base';
 
 const isSupportedFile = (fileName: string) => {
   const validExtensions = /\.(js|ts|mjs|tsx)$/i;
@@ -79,8 +56,11 @@ const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, 
             exportInfo as string :
             (exportInfo as Exports).require;
           const innerPath = exportEntry.replace(/^\.\/+/, '');
-          exportsPaths.add(innerPath);
-          result += getTypesForEntry(packageName, exportInfo, fallbackJs, innerPath);
+          // Cannot supports exports like "./transformations/*"
+          if (!innerPath.endsWith('/*') && !exportsPaths.has(innerPath)) {
+            exportsPaths.add(innerPath);
+            result += getTypesForEntry(packageName, exportInfo, fallbackJs, innerPath);
+          }
         }
       });
     } catch (e) {
@@ -90,26 +70,21 @@ const getTypesImportForModule = (packageName: string, pkgJsonData: PackageJson, 
   return result;
 };
 
-export const createPackageTypes = async (packageName: string, packageVersion: string, fileFetcher: (filePath: string, content?: string) => Promise<string>) => {
-  const url = `https://unpkg.com/${packageName}@${packageVersion}/?meta`;
-
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Network response was not ok ${response.statusText}`);
-  }
-  const packageMeta = await response.json();
-
-  const pathsToRead = collectPackageJsonPaths(packageMeta);
+export const createPackageTypes = async (packageName: string, packageVersion: string, fileFetcher: (filePath: string, content?: string) => Promise<string>, cdnImpl: CDN) => {
+  const pathsToRead = await cdnImpl.getPackageJsonPaths(packageName, packageVersion);
   const exportsPaths = new Set<string>();
-  const results = await Promise.all(pathsToRead.map(async packageJsonPath => {
-    const pkgJsonData: any = await fileFetcher(packageJsonPath);
-    const pkgJson = JSON.parse(pkgJsonData);
-    const modulePath = packageJsonPath.replace('/package.json', '').replace(/^\/+/, '');
-    return {
-      modulePath,
-      content: getTypesImportForModule(packageName, pkgJson, exportsPaths, modulePath)
-    };
-  }));
+  const results = await Promise.all(pathsToRead
+    // so the order of the package json files is deterministic from top level to deeper level
+    .sort((p1, p2) => p1.length - p2.length)
+    .map(async packageJsonPath => {
+      const pkgJsonData: any = await fileFetcher(packageJsonPath);
+      const pkgJson = JSON.parse(pkgJsonData);
+      const modulePath = packageJsonPath.replace('/package.json', '').replace(/^\/+/, '');
+      return {
+        modulePath,
+        content: getTypesImportForModule(packageName, pkgJson, exportsPaths, modulePath)
+      };
+    }));
   return results.filter(({modulePath}) => !modulePath || !exportsPaths.has(modulePath)).map(({content}) => content).join('\n');
 };
 

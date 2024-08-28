@@ -2,7 +2,7 @@ import { builtinModules } from 'module'
 import getLatestVersion from 'get-latest-version';
 import path from 'path';
 import { locateClosestPackageJson } from './locate-closest-package-json';
-import { FetcherFunction } from './fetch-unpkg';
+import { FetcherFunction } from './fetch-cdn';
 import createDebug from 'debug';
 
 const debug = createDebug('files');
