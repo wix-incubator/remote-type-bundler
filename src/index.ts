@@ -12,6 +12,7 @@ import fs from 'fs-extra';
 import { CdnType } from './consts';
 import { CDN } from './cdn-impl/cdn-base';
 import { cdnFactory } from './cdn-factory';
+import { isCodeValid } from './validate-output';
 
 export { CdnType, CDN };
 
@@ -64,6 +65,11 @@ export async function bundleOnce(packageName: string, packageVersion: string, ou
     const result = await bundle.write({file: outputFilePath});
 
     const outputCode = result.output[0].code;
+    const { isValid, match } = isCodeValid(outputCode);
+    if (!isValid) {
+      console.error(`Invalid output code for ${packageName}@${packageVersion}`, match?.[0]);
+      throw new Error(`Invalid output code for ${packageName}@${packageVersion}`);
+    }
     resultCode = outputCode;
   });
 
